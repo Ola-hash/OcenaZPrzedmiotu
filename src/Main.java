@@ -12,10 +12,8 @@ public class Main {
         student.dodajPunkty(ocena);
         student.dodajPunkty(ocena1);
         student.dodajPunkty(ocena2);
-       student.wystawOcene();
-       student.wszystkiePunkty();
-
-
+        student.wszystkiePunkty();
+        student.ocenaZLaborek();
 
     }
 }

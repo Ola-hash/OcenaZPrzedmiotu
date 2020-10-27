@@ -28,6 +28,10 @@ public class Ocena {
         return maxPunkt;
     }
 
+    public String getTypZadania() {
+        return typZadania;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
