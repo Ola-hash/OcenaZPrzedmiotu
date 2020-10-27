@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Student {
     String imie;
@@ -30,7 +29,6 @@ public class Student {
         return index;
     }
 
-
     private double sumaPunktow() {
         int index = znajdzIndexLabZNajmniejszaIloscaPunktow();
         double suma = 0.0;
@@ -40,7 +38,6 @@ public class Student {
         }
         return suma - minPunkt;
     }
-
 
     public void wystawOcene() {
         double punkty = sumaPunktow();
@@ -79,7 +76,6 @@ public class Student {
                 ", punktyUcznia=" + punktyUcznia +
                 '}';
     }
-
 }
 
 

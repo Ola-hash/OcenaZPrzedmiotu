@@ -3,7 +3,7 @@ import java.util.Objects;
 public class Ocena {
     private double punkt;
     private double maxPunkt;
-   private String typZadania;
+    private String typZadania;
 
     public Ocena(double punkt, double maxPunkt, String typZadania) {
         this.punkt = punkt;
