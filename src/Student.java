@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Student {
     String imie;
@@ -21,23 +22,35 @@ public class Student {
         }
     }
 
+    public int ZnajdzIndeksLaboreZNajmniejszaIloscaPunktow() {
+        int indeks = 0;
+        double minPunkt = Double.MAX_VALUE;
+        for (int i = 0; i < punktyUcznia.size(); i++) {
+            if (punktyUcznia.get(i).typZadania.equals("laboratoria")) {
+                if (punktyUcznia.get(i).getPunkt()< minPunkt) {
+                  indeks=i;
+                }
+            }
+        }
+        return indeks;
+    }
 
     public void wystawOcene() {
         double punkty = sumaPunktow();
         double maxPunkty = sumaMaxPunktow();
         double wynik = (punkty / maxPunkty) * 100;
         if (wynik < 60) {
-            System.out.println("Ocena 2");
+            System.out.println(wynik+"% to ocena 2");
         } else if (wynik >= 60 && wynik <= 68) {
-            System.out.println("Ocena 3");
+            System.out.println(wynik+"% to ocena 3");
         } else if (wynik > 68 && wynik <= 76) {
-            System.out.println("Ocena 3,5");
+            System.out.println(wynik+"% to ocena 3,5");
         } else if (wynik > 76 && wynik <= 84) {
-            System.out.println("Ocena 4");
+            System.out.println(wynik+ "% to ocena 4");
         } else if (wynik > 84 && wynik <= 92) {
-            System.out.println("Ocena 4,5");
+            System.out.println(wynik+"% to ocena 4,5");
         } else {
-            System.out.println("Ocena 5");
+            System.out.println(wynik+ "% to ocena 5");
         }
     }
 
