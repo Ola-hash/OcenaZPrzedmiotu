@@ -12,15 +12,15 @@ public class Student {
         punktyUcznia = new ArrayList<>();
     }
 
-    public void dodajPunkty(Ocena ocena) {
+    public void dodajOcene(Ocena ocena) {
         punktyUcznia.add(ocena);
     }
 
-    public int znajdzIndexLabZNajmniejszaIloscaPunktow() {
+    private int znajdzIndexLabZNajmniejszaIloscaPunktow() {
         int index = 0;
         double minPunkt = Double.MAX_VALUE;
         for (int i = 0; i < punktyUcznia.size(); i++) {
-            if (punktyUcznia.get(i).typZadania.equals("laboratoria")) {
+            if (punktyUcznia.get(i).getTypZadania().equals("laboratoria")) {
                 if (punktyUcznia.get(i).getPunkt() < minPunkt) {
                     minPunkt = punktyUcznia.get(i).getPunkt();
                     index = i;
@@ -31,7 +31,7 @@ public class Student {
     }
 
 
-    public double sumaPunktow() {
+    private double sumaPunktow() {
         int index = znajdzIndexLabZNajmniejszaIloscaPunktow();
         double suma = 0.0;
         double minPunkt = punktyUcznia.get(index).getPunkt();
@@ -61,7 +61,7 @@ public class Student {
         }
     }
 
-    public double sumaMaxPunktow() {
+    private double sumaMaxPunktow() {
         int index = znajdzIndexLabZNajmniejszaIloscaPunktow();
         double minPunkt = punktyUcznia.get(index).getMaxPunkt();
         double suma = 0.0;

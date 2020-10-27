@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class Main {
 
@@ -9,11 +9,6 @@ public class Main {
         Ocena ocena = new Ocena(4, 10, "laboratoria");
         Ocena ocena1 = new Ocena(6, 10, "laboratoria");
         Ocena ocena2 = new Ocena(10, 10, "sprawdzian");
-        student.dodajPunkty(ocena);
-        student.dodajPunkty(ocena1);
-        student.dodajPunkty(ocena2);
-        System.out.println( student.ocenaZaLaboratoria());
-        student.wystawOcene();
 
 
     }
