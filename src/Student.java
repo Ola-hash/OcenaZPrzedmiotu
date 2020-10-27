@@ -21,17 +21,6 @@ public class Student {
         }
     }
 
-    public void ocenaZLaborek() {
-        double minPunkt = Double.MAX_VALUE;
-        for (Ocena ocena : punktyUcznia) {
-            if (punktyUcznia.equals(ocena.typZadania)) {
-                if (ocena.getPunkt() < minPunkt) {
-                    minPunkt = ocena.getPunkt();
-                }
-            }
-        }
-        System.out.println("min "+minPunkt);
-    }
 
     public void wystawOcene() {
         double punkty = sumaPunktow();
