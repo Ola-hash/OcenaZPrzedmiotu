@@ -30,21 +30,12 @@ public class Student {
         return index;
     }
 
-    public double ocenaZaSprawdziany() {
-        double suma = 0.0;
-        for (int i = 0; i < punktyUcznia.size(); i++) {
-            if (punktyUcznia.get(i).typZadania.equals("sprawdziany"))
-                suma += punktyUcznia.get(i).getPunkt();
-        }
-        return suma;
-    }
 
-    public double ocenaZaLaboratoria() {
+    public double sumaPunktow() {
         int index = znajdzIndexLabZNajmniejszaIloscaPunktow();
-        double minPunkt = 0.0;
         double suma = 0.0;
+        double minPunkt = punktyUcznia.get(index).getPunkt();
         for (Ocena ocena : punktyUcznia) {
-            minPunkt = punktyUcznia.get(index).getPunkt();
             suma += ocena.getPunkt();
         }
         return suma - minPunkt;
@@ -52,7 +43,7 @@ public class Student {
 
 
     public void wystawOcene() {
-        double punkty = ocenaZaLaboratoria() + ocenaZaSprawdziany();
+        double punkty = sumaPunktow();
         double maxPunkty = sumaMaxPunktow();
         double wynik = (punkty / maxPunkty) * 100;
         if (wynik < 60) {
@@ -72,10 +63,9 @@ public class Student {
 
     public double sumaMaxPunktow() {
         int index = znajdzIndexLabZNajmniejszaIloscaPunktow();
-        double minPunkt = 0.0;
+        double minPunkt = punktyUcznia.get(index).getMaxPunkt();
         double suma = 0.0;
         for (Ocena ocena : punktyUcznia) {
-            minPunkt = punktyUcznia.get(index).getMaxPunkt();
             suma += ocena.getMaxPunkt();
         }
         return suma - minPunkt;
