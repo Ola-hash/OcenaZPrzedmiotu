@@ -16,13 +16,7 @@ public class Student {
         punktyUcznia.add(ocena);
     }
 
-    public void wszystkiePunkty() {
-        for (Ocena oceny : punktyUcznia) {
-            System.out.println(oceny.getPunkt());
-        }
-    }
-
-    public int ZnajdzIndexLabZNajmniejszaIloscaPunktow() {
+    public int znajdzIndexLabZNajmniejszaIloscaPunktow() {
         int index = 0;
         double minPunkt = Double.MAX_VALUE;
         for (int i = 0; i < punktyUcznia.size(); i++) {
@@ -36,8 +30,29 @@ public class Student {
         return index;
     }
 
+    public double ocenaZaSprawdziany() {
+        double suma = 0.0;
+        for (int i = 0; i < punktyUcznia.size(); i++) {
+            if (punktyUcznia.get(i).typZadania.equals("sprawdziany"))
+                suma += punktyUcznia.get(i).getPunkt();
+        }
+        return suma;
+    }
+
+    public double ocenaZaLaboratoria() {
+        int index = znajdzIndexLabZNajmniejszaIloscaPunktow();
+        double minPunkt = 0.0;
+        double suma = 0.0;
+        for (Ocena ocena : punktyUcznia) {
+            minPunkt = punktyUcznia.get(index).getPunkt();
+            suma += ocena.getPunkt();
+        }
+        return suma - minPunkt;
+    }
+
+
     public void wystawOcene() {
-        double punkty = sumaPunktow();
+        double punkty = ocenaZaLaboratoria() + ocenaZaSprawdziany();
         double maxPunkty = sumaMaxPunktow();
         double wynik = (punkty / maxPunkty) * 100;
         if (wynik < 60) {
@@ -55,20 +70,15 @@ public class Student {
         }
     }
 
-    public double sumaPunktow() {
-        double suma = 0.0;
-        for (Ocena ocena : punktyUcznia) {
-            suma += ocena.getPunkt();
-        }
-        return suma;
-    }
-
     public double sumaMaxPunktow() {
+        int index = znajdzIndexLabZNajmniejszaIloscaPunktow();
+        double minPunkt = 0.0;
         double suma = 0.0;
         for (Ocena ocena : punktyUcznia) {
+            minPunkt = punktyUcznia.get(index).getMaxPunkt();
             suma += ocena.getMaxPunkt();
         }
-        return suma;
+        return suma - minPunkt;
     }
 
     @Override
@@ -76,14 +86,10 @@ public class Student {
         return "Student{" +
                 "imie='" + imie + '\'' +
                 ", nazwisko='" + nazwisko + '\'' +
-
                 ", punktyUcznia=" + punktyUcznia +
                 '}';
     }
 
-    public ArrayList<Ocena> getPunktyUcznia() {
-        return punktyUcznia;
-    }
 }
 
 
