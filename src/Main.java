@@ -13,7 +13,6 @@ public class Main {
         student.dodajPunkty(ocena1);
         student.dodajPunkty(ocena2);
         student.wszystkiePunkty();
-        student.ocenaZLaborek();
 
     }
 }
